@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Receitas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body onload="preencheCatalogo()" class="bg-warning">
+    <div class="container-fluid">
+        <h1 class="text-center my-4">Catálogo de Receitas</h1>
+        <div id="pnlCatalogo" class="d-flex flex-wrap justify-content-center"></div>
+    </div>
+
+    <script>
+        const receitas = [
+            {
+                "titulo": "Bolo simples",
+                "imagem": "img/bs.png",
+                "preparo": "Um bolo simples fofinho e quentinho com uma xícara de café pode ser tudo o que você precisa numa tarde...",
+                "ingredientes": [
+                    "2 xícaras (chá) de açúcar",
+                    "3 xícaras (chá) de farinha de trigo",
+                    "4 colheres (sopa) de margarina",
+                    "3 ovos",
+                    "1 e 1/2 xícara (chá) de leite",
+                    "1 colher (sopa) bem cheia de fermento em pó"
+                ]
+            },
+            {
+                "titulo": "Pão de ló",
+                "imagem": "img/pl.png",
+                "preparo": "O pão de ló é um clássico da confeitaria. Com massa fofinha, aerada e superleve, ele serve de bases...",
+                "ingredientes": [
+                    "1 xícara de leite quente",
+                    "3 xícaras de farinha de trigo",
+                    "2 xícaras de açúcar",
+                    "3 gemas",
+                    "3 claras em neve",
+                    "1 colher de fermento em pó químico"
+                ]
+            },
+            {
+                "titulo": "Torta de maçã americana",
+                "imagem": "img/tm.png",
+                "preparo": "Hoje nós trazemos para você a receita da torta de maçã americana, aquela que vemos nos desenhos e film...",
+                "ingredientes": [
+                    "3 xícaras (chá) de farinha de trigo",
+                    "150 g de margarina",
+                    "9 colheres de água gelada",
+                    "8 maçãs sem casca cortadas em cubinhos",
+                    "2 colheres (sopa) de limão",
+                    "..."
+                ]
+            }
+        ];
+
+        function getListaIngredientes(receita) {
+            return `<ul>${receita.ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).join('')}</ul>`;
+        }
+
+        function getCard(receita) {
+            return `
+                <div class="card" style="width: 250px; margin: 10px;">
+                    <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title">${receita.titulo}</h5>
+                        <div class="card-text">
+                            ${getListaIngredientes(receita)}
+                            <hr>
+                            ${receita.preparo}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function preencheCatalogo() {
+            const pnlCatalogo = document.getElementById('pnlCatalogo');
+            pnlCatalogo.innerHTML = receitas.map(receita => getCard(receita)).join('');
+        }
+    </script>
+</body>
+</html>
