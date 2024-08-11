@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="auto">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Pagina de aula missão 1">
+        <meta name="author" content="Ewerson Silva">
+        <meta name="theme-color" content="#712cf9">
+        <title>Receitas</title>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="./assets/css/style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="d-flex flex-column min-vh-100">
+            <header data-bs-theme="dark" class="p-3 text-bg-dark sticky-top">
+                <div class="container">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="./home.html" class="nav-link px-2 text-white">Início</a></li>
+                            <li><a href="./revenues.html" class="nav-link px-2 text-white">Receitas</a></li>
+                        </ul>
+                        <div class="text-end">
+                            <a href="./login.html" class="btn btn-outline-light me-2">Entrar</a>
+                            <a href="./register.html" class="btn btn-danger">Criar uma conta</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+                    <div class="row align-items-center g-lg-5 py-5">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">
+                                Área de Membros
+                            </h1>
+                        </div>
+                        <div class="col-md-10 mx-auto col-lg-6">
+                            <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+                                <div class="form-group mb-3">
+                                    <label for="name">Nome</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Ex.: fulano de tal" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="email">E-Mail</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Ex.: fulano@gostou.com" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="zipcode">CEP</label>
+                                    <input type="text" class="form-control" id="zipcode" placeholder="Ex.: 55900-000" required>
+                                </div>
+                                <div class="row mb-3 form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="street">Rua</label>
+                                        <input type="text" class="form-control" id="street" placeholder="Ex.: Rua 01" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="number">Número</label>
+                                        <input type="text" class="form-control" id="number" placeholder="Ex.: 20" required>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="complement">Complemento</label>
+                                    <input type="text" class="form-control" id="complement" placeholder="Ex.: Casa" required>
+                                </div>
+                                <div class="row mb-3 form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="city">Cidade</label>
+                                        <input type="text" class="form-control" id="city" placeholder="Ex.: Recife" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="state">Estado</label>
+                                        <input type="text" class="form-control" id="state" placeholder="Ex.: PE" required>
+                                    </div>
+                                </div>
+                                <button class="w-100 btn btn-lg btn-danger" type="submit">Criar conta</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="text-white py-5">
+                <div class="container">
+                    <p class="float-end mb-1">
+                        <a href="#">
+                            <img src="./assets/img/topo.png" alt="topo" class="img-top" />
+                        </a>
+                    </p>
+                    <p class="mb-1">Receitas do GustoU &copy; <span id="year">2024</span></p>
+                    <p class="mb-0"><strong>Pagina Criada Pelo Aluno:</strong> Ewerson S.</p>
+                </div>
+            </footer>
+        </div>
+        <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="./assets/js/scripts.js"></script>
+    </body>
+</html>
