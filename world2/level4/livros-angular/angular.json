@@ -5,7 +5,17 @@
   "projects": {
     "livros-angular": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -99,6 +109,6 @@
     }
   },
   "cli": {
-    "analytics": "7ab69339-2d99-4540-a4ad-3ee95470ad40"
+    "analytics": "835518f4-8dd3-4be6-8b83-6012851d178b"
   }
 }
