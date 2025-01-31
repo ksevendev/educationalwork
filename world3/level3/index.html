@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório do Projeto - Cadastro de Pessoas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        h1, h2, h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .section { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Relatório do Projeto - Cadastro de Pessoas</h1>
+    
+    <div class="section">
+        <h2>1. Introdução</h2>
+        <p>Este projeto tem como objetivo desenvolver um sistema de cadastro de pessoas físicas e jurídicas utilizando Java com JDBC e SQL Server. Ele permite a inserção, consulta e gerenciamento dos dados de forma estruturada.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. Tecnologias Utilizadas</h2>
+        <ul>
+            <li>Java SE 8+</li>
+            <li>NetBeans IDE</li>
+            <li>SQL Server</li>
+            <li>JDBC (Java Database Connectivity)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. Estrutura do Banco de Dados</h2>
+        <p>As tabelas do banco de dados foram criadas da seguinte forma:</p>
+        <table>
+            <tr>
+                <th>Tabela</th>
+                <th>Campos</th>
+            </tr>
+            <tr>
+                <td>Pessoa</td>
+                <td>id (PK), nome, logradouro, cidade, estado, telefone, email</td>
+            </tr>
+            <tr>
+                <td>PessoaFisica</td>
+                <td>id (FK), cpf</td>
+            </tr>
+            <tr>
+                <td>PessoaJuridica</td>
+                <td>id (FK), cnpj</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>4. Arquitetura do Projeto</h2>
+        <p>O projeto segue uma estrutura baseada em camadas:</p>
+        <ul>
+            <li><strong>cadastrobd.model:</strong> Contém as classes de modelo (POJOs).</li>
+            <li><strong>cadastrobd.dao:</strong> Contém as classes DAO para manipulação do banco de dados.</li>
+            <li><strong>cadastrobd.util:</strong> Contém a classe ConectorBD para a conexão com o SQL Server.</li>
+            <li><strong>cadastrobd:</strong> Contém a classe principal para testes.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. Funcionamento do Sistema</h2>
+        <p>O sistema permite:</p>
+        <ul>
+            <li>Cadastro de Pessoas Físicas e Jurídicas.</li>
+            <li>Listagem de todas as pessoas cadastradas.</li>
+            <li>Persistência dos dados no SQL Server.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>6. Conclusão</h2>
+        <p>Este projeto demonstra a integração entre Java e SQL Server, utilizando boas práticas como DAO e JDBC. Ele pode ser expandido para incluir funcionalidades como atualização e remoção de registros.</p>
+    </div>
+</body>
+</html>

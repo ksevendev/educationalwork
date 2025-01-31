@@ -1,0 +1,5 @@
+jdbc:sqlserver://localhost\KSEVEN\SQLEXPRESS:1433;databaseName=lojas;encrypt=false;trustServerCertificate=false; 
+
+or 
+
+jdbc:sqlserver://localhost\KSEVEN\SQLEXPRESS:1433;databaseName=lojas;encrypt=true;trustServerCertificate=true; 
