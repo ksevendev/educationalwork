@@ -1,3 +1,4 @@
+
 package model;
 
 import java.io.*;
@@ -5,45 +6,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PessoaFisicaRepo {
-    private List<PessoaFisica> pessoas = new ArrayList<>();
+    private final List<PessoaFisica> listaPessoasFisicas = new ArrayList<>();
 
-    public void inserir(PessoaFisica pessoa) {
-        pessoas.add(pessoa);
+    public void inserir(PessoaFisica pessoaFisica) {
+        listaPessoasFisicas.add(pessoaFisica);
     }
 
-    public void alterar(PessoaFisica pessoa) {
-        for (int i = 0; i < pessoas.size(); i++) {
-            if (pessoas.get(i).getId() == pessoa.getId()) {
-                pessoas.set(i, pessoa);
+    public void alterar(PessoaFisica pessoaFisica) {
+        for (int i = 0; i < listaPessoasFisicas.size(); i++) {
+            if (pessoaFisica.getId() == listaPessoasFisicas.get(i).getId()) {
+                listaPessoasFisicas.set(i, pessoaFisica);
                 return;
             }
         }
     }
 
     public void excluir(int id) {
-        pessoas.removeIf(p -> p.getId() == id);
-    }
-
-    public PessoaFisica obter(int id) {
-        return pessoas.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .orElse(null);
-    }
-
-    public List<PessoaFisica> obterTodos() {
-        return new ArrayList<>(pessoas);
-    }
-
-    public void persistir(String arquivo) throws IOException {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
-            oos.writeObject(pessoas);
+        for (int i = 0; i < listaPessoasFisicas.size(); i++) {
+            if (listaPessoasFisicas.get(i).getId() == id) {
+                listaPessoasFisicas.remove(i);
+                return;
+            }
         }
     }
 
-    public void recuperar(String arquivo) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))) {
-            pessoas = (List<PessoaFisica>) ois.readObject();
+    public PessoaFisica obter(int id) {
+        for (PessoaFisica pessoaFisica : listaPessoasFisicas) {
+            if (pessoaFisica.getId() == id) {
+                return pessoaFisica;
+            }
+        }
+        return null;
+    }
+
+    public List<PessoaFisica> obterTodos() {
+        return listaPessoasFisicas;
+    }
+
+    public void persistir(String nomeArquivo) throws IOException {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(nomeArquivo))) {
+            outputStream.writeObject(listaPessoasFisicas);
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public void recuperar(String nomeArquivo) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomeArquivo))) {
+            listaPessoasFisicas.clear();
+            List<PessoaFisica> listaRecuperada = (List<PessoaFisica>) inputStream.readObject();
+            listaPessoasFisicas.addAll(listaRecuperada);
+        } catch (IOException | ClassNotFoundException e) {
+            throw e;
         }
     }
 }

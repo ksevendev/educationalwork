@@ -1,10 +1,11 @@
+
 package model;
 
-public class PessoaJuridica extends Pessoa {
-    private String cnpj;
+import java.io.Serializable;
 
-    public PessoaJuridica() {
-    }
+public class PessoaJuridica extends Pessoa implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String cnpj;
 
     public PessoaJuridica(int id, String nome, String cnpj) {
         super(id, nome);
@@ -21,7 +22,8 @@ public class PessoaJuridica extends Pessoa {
 
     @Override
     public void exibir() {
-        super.exibir();
-        System.out.println("CNPJ: " + cnpj);
+        System.out.println("CNPJ: " + this.cnpj);
+
     }
+
 }

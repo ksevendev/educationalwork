@@ -1,11 +1,11 @@
 package model;
 
-public class PessoaFisica extends Pessoa {
+import java.io.Serializable;
+
+public class PessoaFisica extends Pessoa implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String cpf;
     private int idade;
-
-    public PessoaFisica() {
-    }
 
     public PessoaFisica(int id, String nome, String cpf, int idade) {
         super(id, nome);
@@ -32,6 +32,7 @@ public class PessoaFisica extends Pessoa {
     @Override
     public void exibir() {
         super.exibir();
-        System.out.println("CPF: " + cpf + ", Idade: " + idade);
+        System.out.println("CPF: " + this.cpf);
+        System.out.println("Idade: " + this.idade);
     }
 }

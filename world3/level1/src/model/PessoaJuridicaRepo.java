@@ -1,56 +1,63 @@
+
 package model;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Optional;
+import java.util.List;
 
 public class PessoaJuridicaRepo {
-    private ArrayList<PessoaJuridica> pessoasJuridicas;
+    private final List<PessoaJuridica> listaPessoasJuridicas = new ArrayList<>();
 
-    public PessoaJuridicaRepo() {
-        this.pessoasJuridicas = new ArrayList<>();
+    public void inserir(PessoaJuridica pessoaJuridica) {
+        listaPessoasJuridicas.add(pessoaJuridica);
     }
 
-    public void inserir(PessoaJuridica pessoa) {
-        pessoasJuridicas.add(pessoa);
-    }
-
-    public void alterar(PessoaJuridica pessoa) {
-        Optional<PessoaJuridica> existente = pessoasJuridicas.stream()
-                .filter(p -> p.getId() == pessoa.getId())
-                .findFirst();
-
-        existente.ifPresent(p -> {
-            p.setNome(pessoa.getNome());
-            p.setCnpj(pessoa.getCnpj());
-        });
-    }
-
-    public void excluir(int id) {
-        pessoasJuridicas.removeIf(p -> p.getId() == id);
-    }
-
-    public PessoaJuridica obter(int id) {
-        return pessoasJuridicas.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .orElse(null);
-    }
-
-    public ArrayList<PessoaJuridica> obterTodos() {
-        return new ArrayList<>(pessoasJuridicas);
-    }
-
-    public void persistir(String nomeArquivo) throws IOException {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomeArquivo))) {
-            oos.writeObject(pessoasJuridicas);
+    public void alterar(PessoaJuridica pessoaJuridica) {
+        for (int i = 0; i < listaPessoasJuridicas.size(); i++) {
+            if (pessoaJuridica.getId() == listaPessoasJuridicas.get(i).getId()) {
+                listaPessoasJuridicas.set(i, pessoaJuridica);
+                return;
+            }
         }
     }
 
-    @SuppressWarnings("unchecked")
+    public void excluir(int id) {
+        for (int i = 0; i < listaPessoasJuridicas.size(); i++) {
+            if (listaPessoasJuridicas.get(i).getId() == id) {
+                listaPessoasJuridicas.remove(i);
+                return;
+            }
+        }
+    }
+
+    public PessoaJuridica obter(int id) {
+        for (PessoaJuridica pessoaJuridica : listaPessoasJuridicas) {
+            if (pessoaJuridica.getId() == id) {
+                return pessoaJuridica;
+            }
+        }
+        return null;
+    }
+
+    public List<PessoaJuridica> obterTodos() {
+        return listaPessoasJuridicas;
+    }
+
+    public void persistir(String nomeArquivo) throws IOException {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(nomeArquivo))) {
+            outputStream.writeObject(listaPessoasJuridicas);
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
     public void recuperar(String nomeArquivo) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomeArquivo))) {
-            this.pessoasJuridicas = (ArrayList<PessoaJuridica>) ois.readObject();
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomeArquivo))) {
+            listaPessoasJuridicas.clear();
+            List<PessoaJuridica> listaRecuperada = (List<PessoaJuridica>) inputStream.readObject();
+            listaPessoasJuridicas.addAll(listaRecuperada);
+        } catch (IOException | ClassNotFoundException e) {
+            throw e;
         }
     }
 }
